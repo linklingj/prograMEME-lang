@@ -1,1 +1,1 @@
-compile
+import meme_lang

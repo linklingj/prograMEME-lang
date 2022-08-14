@@ -1,3 +1,3 @@
 import meme_lang
 
-meme_lang.run_file("hello.meme")
+meme_lang.run_file("examples/gugudan.meme")
