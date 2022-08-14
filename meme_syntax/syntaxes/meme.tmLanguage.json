@@ -1,0 +1,150 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "PrograMEME Language",
+	"patterns": [
+		{
+		  "include": "#terms"
+		},
+		{
+		  "include": "#punctuations"
+		},
+		{
+		  "include": "#strings"
+		},
+		{
+		  "include": "#numbers"
+		},
+		{
+		  "include": "#keyword-control"
+		},
+		{
+		  "include": "#keyword-operator"
+		},
+		{
+		  "include": "#entity-name-type"
+		},
+		{
+		  "include": "#entity-name-function"
+		}
+	  ],
+	  "repository": {
+		"terms": {
+		  "patterns": [
+			{
+			  "name": "entity.name.type.language.meme",
+			  "match": "([a-z][a-z0-9]*(?:-[a-z0-9]+)*)"
+			},
+			{
+			  "name": "entity.name.type.language.parens.meme",
+			  "begin": "([a-z][a-z0-9]*(?:-[a-z0-9]+)*)\\(",
+			  "end": "\\)",
+			  "patterns": [
+				{
+				  "includes": "#terms"
+				},
+				{
+				  "includes": "#strings"
+				},
+				{
+				  "includes": "#numbers"
+				}
+			  ]
+			}
+		  ]
+		},
+		"numbers": {
+		  "patterns": [
+			{
+			  "name": "constant.numeric.integer.meme",
+			  "match": "\\\\"
+			}
+		  ]
+		},
+		"punctuations": {
+		  "patterns": [
+			{
+			  "name": "punctuation.separator.parameter.meme",
+			  "match": ","
+			},
+			{
+			  "name": "punctuation.curly.open.meme",
+			  "match": "\\{"
+			},
+			{
+			  "name": "punctuation.curly.close.meme",
+			  "match": "\\}"
+			}
+		  ]
+		},
+		"strings": {
+		  "name": "string.meme",
+		  "begin": "\\<",
+		  "end": "\\>",
+		  "patterns": [
+			{
+			  "name": "constant.character.escape.meme",
+			  "match": "\\\\."
+			},
+			{
+			  "name": "punctuation.term.meme",
+			  "begin": "\\{",
+			  "beginCaptures": {
+				"0": {
+				  "name": "meta.brace.curly.meme"
+				}
+			  },
+			  "end": "\\}",
+			  "endCaptures": {
+				"0": {
+				  "name": "meta.brace.curly.meme"
+				}
+			  },
+			  "patterns": [
+				{
+				  "include": "#terms"
+				},
+				{
+				  "include": "#numbers"
+				},
+				{
+				  "include": "#strings"
+				}
+			  ]
+			}
+		  ]
+		},
+		"entity-name-type": {
+			"patterns": [
+				{
+					"name": "entity.name.type",
+					"match": "숫자|문자"
+				}
+			]
+		},
+		"entity-name-function": {
+			"patterns": [
+				{
+					"name": "entity.name.function",
+					"match": "물어본사람|물어본사람손|안물"
+				}
+			]
+		},
+		"keyword-control": {
+			"patterns": [
+				{
+					"name": "keyword.control",
+					"match": "저쩔|어쩔|묻고|ㄹㅇ|무야호|멈춰!"
+				}
+			]
+		},
+		"keyword-operator": {
+			"patterns": [
+				{
+					"name": "keyword.operator",
+					"match": "더하기|빼기|곱하기|나누기|은 |는 "
+				}
+			]
+		}
+	  },
+	"scopeName": "source.meme"
+}
