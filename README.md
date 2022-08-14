@@ -101,3 +101,8 @@ break => 멈춰!
 ```
 ㄴprint("MEME")ㄱ
 ```
+
+## VSCode를 위한 syntax
+
+사용법: meme 폴더를 .vscode/extensions 로 옮긴다 (npm 필요로 할수도?)
+vscode를 재시작 한다
