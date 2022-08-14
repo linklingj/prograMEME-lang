@@ -24,6 +24,7 @@ T_DIV = '나누기'
 T_PLUS = '더하기'
 T_MINUS = '빼기'
 T_EQUALS = '¯\_(ツ)_/¯'
+T_UNEQUAL = '＞︿＜'
 T_LARGER = '( ﾉ ﾟｰﾟ)ﾉ'
 T_LARGERSAME = '(☞ﾟヮﾟ)☞'
 T_REPEAT = '누구인가'
@@ -86,6 +87,8 @@ def get_type(c):
 
     if T_EQUALS in c:
         return 'EQUALS'
+    if T_UNEQUAL in c:
+        return 'UNEQUAL'
     if T_LARGER in c:
         return 'LARGER'
     if T_LARGERSAME in c:
@@ -167,6 +170,13 @@ class Meme:
                 a = self.transfer_type(c.split(T_EQUALS)[0].strip())
                 b = self.transfer_type(c.split(T_EQUALS)[1].strip())
                 if a == b:
+                    self.skip = False
+                else:
+                    self.skip = True
+            if get_type(c) == 'UNEQUAL':
+                a = self.transfer_type(c.split(T_UNEQUAL)[0].strip())
+                b = self.transfer_type(c.split(T_UNEQUAL)[1].strip())
+                if a != b:
                     self.skip = False
                 else:
                     self.skip = True
